@@ -8,7 +8,7 @@ const Footer = () => {
             <div>
                 <img src={logo} className="inline-block w-44" alt="logo" />
                 <p className="font-bold">
-                    MobiHub Company Ltd. <br />"Providing the the world’s most reliable and loved mobile recycling place"
+                    MobiHub Company Ltd. <br />"Providing the the world’s most reliable and loved mobile reselling place"
                 </p>
                 <p>Copyright © 2022 - All right reserved</p>
             </div>
