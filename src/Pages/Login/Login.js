@@ -76,7 +76,7 @@ const Login = () => {
 
                     <input className='btn btn-info w-full  text-white' value="Login" type="submit" />
                 </form>
-                <p className='text-sm py-3' >New to Cell-it? <Link to='/register' className='text-blue-400'>Creat An Account</Link></p>
+                <p className='text-sm py-3' >New to Cell-it? <Link to='/signup' className='text-blue-400'>Creat An Account</Link></p>
                 <small className='text-red-700 text-center'>
                     {error}
                 </small>
