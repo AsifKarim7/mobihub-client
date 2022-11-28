@@ -7,7 +7,6 @@ import Login from "../../Pages/Login/Login";
 import ProductCollection from "../../Pages/ProductCollection/ProductCollection";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import Dashboard from "../../Pages/Dashboard/Dashboard";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import AddProduct from "../../Pages/AddProduct/AddProduct";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";

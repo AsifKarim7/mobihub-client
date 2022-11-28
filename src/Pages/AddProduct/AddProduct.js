@@ -29,7 +29,7 @@ const AddProduct = () => {
             price,
             description,
             seller: displayName,
-            sellerEmail: email,
+            email,
             name,
             categoryId,
             title,
