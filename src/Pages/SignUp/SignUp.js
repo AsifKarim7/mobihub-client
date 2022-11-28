@@ -24,10 +24,12 @@ const SignUp = () => {
                 navigate('/login');
                 toast('user created sucessfully')
                 const userInfo = {
-                    displayname: data.name
+                    displayName: data.name
                 }
                 updateUserProfile(userInfo)
-                    .then(() => { })
+                    .then(() => {
+                        saveBuyer(data.name, data.email);
+                    })
                     .catch(err => console.log(err));
             })
             .catch(error => {
@@ -37,6 +39,21 @@ const SignUp = () => {
 
     }
 
+    const saveBuyer = (name, email) => {
+        const buyer = { name, email };
+        fetch('http://localhost:5000/buyers', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(buyer)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('buyerdata', data);
+                navigate('/');
+            })
+    }
 
 
     return (
