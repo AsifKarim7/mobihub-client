@@ -14,6 +14,18 @@ const AllBuyers = () => {
 
     });
 
+    const handleAdmin = id => {
+        fetch(`http://localhost:5000/users/admin/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Admin Role Created')
+                    refetch();
+                };
+            })
+    }
 
     return (
         <div>
@@ -31,7 +43,7 @@ const AllBuyers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Make Admin</th>
-                            <th>Delet</th>
+                            <th>Delete</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -47,7 +59,7 @@ const AllBuyers = () => {
                                 </td>
                                 <td>{buyer.email}</td>
                                 <th>
-                                    {buyer?.role !== 'admin' && <button className="btn btn-info text-white btn-xs">Admin</button>}
+                                    {buyer?.role !== 'admin' && <button onClick={() => handleAdmin(buyer._id)} className="btn btn-info text-white btn-xs">Admin</button>}
                                 </th>
                                 <th>
                                     <button className="btn  btn-error btn-circle btn-xs">
