@@ -3,7 +3,8 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import useToken from '../../assests/hooks/useToken/useToken';
+import useToken from '../../hooks/useToken/useToken';
+
 
 const Login = () => {
     const [error, setError] = useState('');
@@ -73,14 +74,14 @@ const Login = () => {
                         <input type="text" {...register("password", { required: "Password is required", minLength: { value: 6, message: "password must be 6 characters long" } })} className="input input-bordered border-info w-full max-w-xs" />
                         {errors.password && <p className='text-error'>{errors.password?.message}</p>}
                         <label className="label">
-                            <span className="label-text">Forget Password?</span>
+                            <span className="label-text">Forgot Password?</span>
                         </label>
                     </div>
 
 
                     <input className='btn btn-info w-full  text-white' value="Login" type="submit" />
                 </form>
-                <p className='text-sm py-3' >New to Cell-it? <Link to='/signup' className='text-blue-400'>Creat An Account</Link></p>
+                <p className='text-sm py-3' >New to MobiHub? <Link to='/signup' className='text-blue-400'>Create An Account</Link></p>
                 <small className='text-red-700 text-center'>
                     {error}
                 </small>

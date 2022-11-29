@@ -3,9 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
-import useToken from '../../assests/hooks/useToken/useToken';
-
-
+import useToken from '../../hooks/useToken/useToken';
 
 const SignUp = () => {
     const [error, SetError] = useState('');
@@ -24,7 +22,9 @@ const SignUp = () => {
 
     const handleSignup = data => {
         console.log(data);
-        createUser(data.email, data.password)
+        const role = document.getElementById('role').value;
+
+        createUser(data.email, data.password, role)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -36,7 +36,7 @@ const SignUp = () => {
                 }
                 updateUserProfile(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email);
+                        saveUser(data.name, data.email, role);
                     })
                     .catch(err => console.log(err));
             })
@@ -47,8 +47,8 @@ const SignUp = () => {
 
     }
 
-    const saveUser = (name, email) => {
-        const user = { name, email };
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -79,6 +79,13 @@ const SignUp = () => {
                         <input type="text" {...register("name", { required: true })} className="input input-bordered border-info w-full max-w-xs" />
                         {errors.name && <p className='text-error'>{errors.name?.message}</p>}
                     </div>
+
+                    <select id='role' name='role' className="select w-full max-w-xs my-3" required>
+                        <option selected value='buyer'>Buyer</option>
+                        <option value='seller'>Seller</option>
+
+                    </select>
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text font-semibold">Email</span>
