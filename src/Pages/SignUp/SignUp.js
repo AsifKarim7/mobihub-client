@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
+import useToken from '../../assests/hooks/useToken/useToken';
 
 
 
@@ -11,7 +12,14 @@ const SignUp = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext);
+
+    const [createdEmail, setCreatedEmail] = useState('')
+    const [token] = useToken(createdEmail);
     const navigate = useNavigate();
+
+    if (token) {
+        navigate('/');
+    }
 
 
     const handleSignup = data => {
@@ -21,14 +29,14 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 SetError('');
-                navigate('/login');
-                toast('user created sucessfully')
+                setCreatedEmail(data.email);
+                toast.success('user created sucessfully')
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUserProfile(userInfo)
                     .then(() => {
-                        saveBuyer(data.name, data.email);
+                        saveUser(data.name, data.email);
                     })
                     .catch(err => console.log(err));
             })
@@ -39,18 +47,19 @@ const SignUp = () => {
 
     }
 
-    const saveBuyer = (name, email) => {
-        const buyer = { name, email };
-        fetch('http://localhost:5000/buyers', {
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(buyer)
+            body: JSON.stringify(user)
         })
             .then(res => res.json())
             .then(data => {
-                console.log('buyerdata', data);
+                console.log('userdata', data);
+                setCreatedEmail(email);
                 navigate('/');
             })
     }

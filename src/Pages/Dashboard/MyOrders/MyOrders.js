@@ -11,12 +11,12 @@ const MyOrders = () => {
     const { data: orders = [] } = useQuery({
         queryKey: ['orders', user?.email],
         queryFn: async () => {
-            const res = await fetch(url)
+            const res = await fetch(url);
             const data = await res.json();
             return data;
         }
     })
-    console.log()
+
     return (
         <div>
             <h2 className='text-3xl'>My Orders</h2>
