@@ -16,11 +16,13 @@ import AllBuyers from "../../Pages/AllBuyers/AllBuyers";
 import AllSeller from "../../Pages/AllSeller/AllSeller";
 import SellerRoute from "../SellerRoute/SellerRoute";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
+import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -47,6 +49,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
+        errorElement: <ErrorPage></ErrorPage>,
         element: <PrivateRoute> <DashboardLayout> </DashboardLayout> </PrivateRoute>,
         children: [
             {
