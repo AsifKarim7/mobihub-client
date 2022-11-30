@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const AdvertisedItems = () => {
     const [advertisedProducts, setAdvertisedProducts] = useState([]);
@@ -12,7 +13,9 @@ const AdvertisedItems = () => {
 
     return (
         <div className="max-w-screen-xl mx-auto md:pt-10 pb-6">
-            <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-12'>
+            <h1 className='text-3xl md:text-5xl font-bold text-center text-black'>ADVERTISED PRODUCTS</h1>
+            <p></p>
+            <div className='grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-12'>
                 {
                     advertisedProducts.map(product => <div
                         key={product._id}
@@ -32,6 +35,10 @@ const AdvertisedItems = () => {
                                 <p className='font-bold text-lg text-blue-600'> <span className='font-semibold text-lg'>Price : </span>$ {product.price}</p>
                                 <p className='font-bold text-end px-5'> <span className='font-semibold text-lg'>Condition :</span> {product.condition}</p>
                             </div>
+                            <div className="flex items-center justify-center ">
+                                <Link to={`/category/${product.categoryId}`}> <button className="btn btn-primary">View Details</button></Link>
+                            </div>
+
                         </div>
                     </div>
                     )

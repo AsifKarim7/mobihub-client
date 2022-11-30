@@ -1,8 +1,10 @@
 import React from 'react';
-import banner1 from '../../../assests/images/banner.jpg'
-import banner2 from '../../../assests/images/banner2.png'
+import banner1 from '../../../assests/images/banner.jpg';
+import banner2 from '../../../assests/images/banner2.png';
+
 
 const Banner = () => {
+
     return (
         <div className='max-w-screen-2xl mx-auto my-10'>
             <div className="carousel w-full mx-auto rounded-xl shadow-xl">
@@ -12,9 +14,8 @@ const Banner = () => {
                     </div>
 
                     <div className="absolute text-center transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <h2 className='text-7xl font-bold pb-10 text-red-400'>BOOK<span className='text-[#2666CF]'> YOUR FLIGHT</span></h2>
-                        <h2 className='text-lg font-semibold pb-10 text-white'>Find your next stay. Get the best experience of your journey with us. And save 15% with Late Escape Deals</h2>
-                        <button className="btn btn-outline border-red-400 text-white">Book Now</button>
+                        <h2 className='text-3xl md:text-5xl font-bold pb-2 text-white'>Unbeatble Choices for</h2>
+                        <h2 className='text-5xl md:text-7xl font-semibold pb-10 text-[#DEF6FF]'>Second Hand Mobiles</h2>
                     </div>
 
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -28,10 +29,10 @@ const Banner = () => {
                     <div className='w-full banner-gradient'>
                         <img src={banner2} alt='' className="w-full" />
                     </div>
-                    <div className="absolute  text-center transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <h2 className='text-7xl font-bold pb-10 text-white '>LUXURY PRIVATE JETS <span className='text-orange-300 '>OFFERS!!</span> </h2>
-                        <h2 className='text-lg font-semibold pb-10 text-white'>It's like a dream come true moment. Now get rent and travel by your own private charter in lowest cost. </h2>
-                        <button className="btn btn-outline border-orange-200 text-white">Read More</button>
+
+                    <div className="absolute text-center transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <h2 className='text-5xl md:text-7xl font-bold pb-2 text-[#DEF6FF]'>Great Stuff at Great Value</h2>
+                        <h2 className='text-3xl md:text-5xl font-semibold pb-10 text-white'>We are Here to Serve You the <span className='text-[#DEF6FF]'>BEST</span></h2>
                     </div>
 
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">

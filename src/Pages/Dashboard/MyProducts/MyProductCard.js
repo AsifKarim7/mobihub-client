@@ -7,7 +7,9 @@ import { useNavigate } from 'react-router-dom';
 const MyProductCard = ({ product, handleDelete }) => {
 
     const navigate = useNavigate();
-    const { seller, name, img, price, condition, location, description, used, _id } = product;
+    const { seller, name, img, price, condition, location, description, used, _id, categoryId
+    } = product;
+
 
 
     const handleAdvertise = id => {
@@ -18,7 +20,8 @@ const MyProductCard = ({ product, handleDelete }) => {
             seller,
             name,
             condition,
-            used
+            used,
+            categoryId
         }
         fetch('http://localhost:5000/advertisedProduct', {
             method: 'POST',

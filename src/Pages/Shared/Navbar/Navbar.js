@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assests/images/logo.png';
-import { FaUserAlt } from 'react-icons/fa';
+import { FaUserAlt, FaSignOutAlt } from 'react-icons/fa';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Navbar = () => {
@@ -30,7 +30,7 @@ const Navbar = () => {
     const menuLoginLogout = <>
         {
             user?.email ?
-                <button onClick={handleLogOut} className='flex items-center gap-3 motion-safe:hover:scale-110'>Logout</button>
+                <button onClick={handleLogOut} className='flex items-center gap-3 motion-safe:hover:scale-110'><span>Logout</span> <FaSignOutAlt></FaSignOutAlt> </button>
                 :
                 <Link to='/login' className='flex items-center gap-3 motion-safe:hover:scale-110'><span>Login</span><FaUserAlt></FaUserAlt></Link>
         }
