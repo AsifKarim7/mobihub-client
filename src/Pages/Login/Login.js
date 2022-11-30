@@ -32,6 +32,7 @@ const Login = () => {
                 console.log(user);
                 setLoginEmail(data.email)
                 setError('');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
@@ -54,8 +55,8 @@ const Login = () => {
 
     return (
         <div className='h-[700px] flex justify-center items-center '>
-            <div className='w-96 px-10 py-10 bg-blue-100 rounded-md'>
-                <h2 className='text-4xl font-bold text-center text-blue-400 my-3'>LOGIN</h2>
+            <div className='w-96 px-10 py-10 bg-[#DEF6FF] rounded-md'>
+                <h2 className='text-4xl font-bold text-center text-[#2666CF] my-3'>LOGIN</h2>
                 <form onSubmit={handleSubmit(handleLogin)}>
 
 
@@ -73,20 +74,18 @@ const Login = () => {
                         </label>
                         <input type="text" {...register("password", { required: "Password is required", minLength: { value: 6, message: "password must be 6 characters long" } })} className="input input-bordered border-info w-full max-w-xs" />
                         {errors.password && <p className='text-error'>{errors.password?.message}</p>}
-                        <label className="label">
-                            <span className="label-text">Forgot Password?</span>
-                        </label>
+
                     </div>
 
 
-                    <input className='btn btn-info w-full  text-white' value="Login" type="submit" />
+                    <input className='btn btn-primary w-full mt-4 text-white' value="Login" type="submit" />
                 </form>
-                <p className='text-sm py-3' >New to MobiHub? <Link to='/signup' className='text-blue-400'>Create An Account</Link></p>
+                <p className='text-sm py-3' >New to MobiHub? <Link to='/signup' className='text-[#2666CF]'>SignUp Here</Link></p>
                 <small className='text-red-700 text-center'>
                     {error}
                 </small>
                 <div className="divider">OR</div>
-                <button onClick={handleGoogleSignIn} className='btn btn-outline border-info w-full'>Login with Google</button>
+                <button onClick={handleGoogleSignIn} className='btn btn-primary text-white w-full'>Login with Google</button>
             </div>
         </div>
     );

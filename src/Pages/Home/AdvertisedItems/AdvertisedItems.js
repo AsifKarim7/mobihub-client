@@ -5,11 +5,12 @@ const AdvertisedItems = () => {
     const [advertisedProducts, setAdvertisedProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/advertisedProduct')
+        fetch('https://mobihub-server-ecru.vercel.app/advertisedProduct')
             .then(res => res.json())
             .then(data => setAdvertisedProducts(data))
     }, []);
 
+    console.log(advertisedProducts)
 
     return (
         <div className="max-w-screen-xl mx-auto md:pt-10 pb-6">
@@ -19,26 +20,19 @@ const AdvertisedItems = () => {
                 {
                     advertisedProducts.map(product => <div
                         key={product._id}
-                        className="card shadow-lg bg-blue-100">
-                        <div className='flex justify-between py-5 px-5'>
-                            <h2 className='text-xl font-bold'>{product.seller}</h2>
-                            <p className='text-gray-600 font-semibold text-base'>{product.location}</p>
-                        </div>
-                        <img src={product.img} className="w-auto h-72" alt="Album" />
+                        className="card shadow-lg bg-white">
+                        <img src={product.img} className="w-auto h-72 rounded-t-xl" alt="Album" />
                         <div className=" card-body px-4">
-                            <h2 className="text-xl font-bold pb-5 text-blue-500">{product.name}</h2>
-                            <p> <span className='font-semibold text-lg'> Description :</span> {product.description}.</p>
-                            <p> <span className='font-semibold text-lg'> Product used :</span> {product.used}.</p>
+                            <h2 className="text-xl font-bold pb-5 text-[#2666CF]">{product.name}</h2>
+                            <p className='font-bold text-lg'>Product used:<span className='font-semibold text-lg'> {product.used}</span></p>
 
-                            <div className='flex justify-between py-5'>
-
-                                <p className='font-bold text-lg text-blue-600'> <span className='font-semibold text-lg'>Price : </span>$ {product.price}</p>
-                                <p className='font-bold text-end px-5'> <span className='font-semibold text-lg'>Condition :</span> {product.condition}</p>
+                            <div className='flex justify-between pt-2 pb-5'>
+                                <p className='font-bold text-lg'>Price: <span className='font-semibold text-lg
+                                 text-[#2666CF]'>${product.price}</span></p>
                             </div>
                             <div className="flex items-center justify-center ">
-                                <Link to={`/category/${product.categoryId}`}> <button className="btn btn-primary">View Details</button></Link>
+                                <Link to={`/category/${product.categoryId}`}> <button className="btn  btn-primary text-white">View Details</button></Link>
                             </div>
-
                         </div>
                     </div>
                     )

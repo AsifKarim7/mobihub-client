@@ -7,7 +7,7 @@ const MyOrders = () => {
 
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/orders?email=${user?.email}`;
+    const url = `https://mobihub-server-ecru.vercel.app/orders?email=${user?.email}`;
 
     const { data: orders = [] } = useQuery({
         queryKey: ['orders', user?.email],
@@ -19,8 +19,7 @@ const MyOrders = () => {
     })
 
     return (
-        <div>
-            <h2 className='text-3xl'>My Orders</h2>
+        <div className='my-12  md:max-w-screen-xl  mx-auto'>
 
             <div className="overflow-x-auto w-full mx-5">
                 <table className="table w-full">

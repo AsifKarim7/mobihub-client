@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:categoryId',
                 element: <PrivateRoute><ProductCollection></ProductCollection></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.categoryId}`)
+                loader: ({ params }) => fetch(`https://mobihub-server-ecru.vercel.app/category/${params.categoryId}`)
             }
         ]
     },
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard/myorders',
-                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
+                element: <MyOrders></MyOrders>
             },
             {
                 path: '/dashboard/addproduct',
@@ -75,8 +75,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/payment/:id',
-                element: <BuyerRoute><Payment></Payment></BuyerRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/orders/${params.id}`)
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`https://mobihub-server-ecru.vercel.app/orders/${params.id}`)
             }
 
         ]

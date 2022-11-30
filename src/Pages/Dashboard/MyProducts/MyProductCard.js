@@ -23,7 +23,7 @@ const MyProductCard = ({ product, handleDelete }) => {
             used,
             categoryId
         }
-        fetch('http://localhost:5000/advertisedProduct', {
+        fetch('https://mobihub-server-ecru.vercel.app/advertisedProduct', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -43,31 +43,29 @@ const MyProductCard = ({ product, handleDelete }) => {
     return (
 
 
-        <div className="card shadow-lg bg-blue-100">
-            <div className='flex justify-between py-5 px-5'>
-                <h2 className='text-xl font-bold'>{seller}</h2>
-                <p className='text-gray-600 font-semibold text-base'>{location}</p>
-            </div>
-            <img src={product.img} className="w-auto h-72" alt="Album" />
-            <div className=" card-body px-4">
-                <h2 className="text-xl font-bold pb-5 text-blue-500">{name}</h2>
-                <p> <span className='font-semibold text-lg'> Description :</span> {description}.</p>
-                <p> <span className='font-semibold text-lg'> Product used :</span> {used}.</p>
+        <div className="card shadow-lg bg-white">
+            <img src={product.img} className="w-auto h-72 rounded-t-xl" alt="Album" />
+
+            <div className=" card-body h-[350px] px-4">
+                <h2 className="text-xl font-bold pb-5 text-[#2666CF]">{name}</h2>
+                <p> <span className='font-semibold text-lg'> Description :</span> {description}</p>
+                <p> <span className='font-semibold text-lg'> Product used :</span> {used}</p>
+                <p> <span className='font-semibold text-lg'>Location :</span> {location}</p>
 
                 <div className='flex justify-between py-5'>
 
-                    <p className='font-bold text-lg text-blue-600'> <span className='font-semibold text-lg'>Price : </span>$ {price}</p>
+                    <p className='font-bold text-lg text-[#2666CF]'>Price :<span className='font-semibold text-lg'> ${price}</span></p>
                     <p className='font-bold text-end px-5'> <span className='font-semibold text-lg'>Condition :</span> {condition}</p>
 
                 </div>
 
 
             </div>
-            <div className='flex justify-end'>
+            <div className='flex justify-end items-center pb-6'>
 
-                <button onClick={() => handleDelete(_id)} className="btn btn-ghost"> <AiFillDelete className='text-xl'></AiFillDelete></button>
+                <button onClick={handleAdvertise} className="btn btn-sm btn-primary text-white">Advertise Product</button>
 
-                <button onClick={handleAdvertise} className="btn btn-ghost"> Advertisement </button>
+                <button onClick={() => handleDelete(_id)} className="btn btn-ghost mx-2"> <AiFillDelete className='text-2xl'></AiFillDelete></button>
 
             </div>
         </div>

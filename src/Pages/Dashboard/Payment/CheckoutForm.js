@@ -14,7 +14,7 @@ const CheckoutForm = ({ order }) => {
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://mobihub-server-ecru.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -77,7 +77,7 @@ const CheckoutForm = ({ order }) => {
                 email,
                 orderId: _id
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://mobihub-server-ecru.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -117,7 +117,7 @@ const CheckoutForm = ({ order }) => {
                     }}
                 />
                 <button
-                    className='btn btn-sm mt-4 btn-primary'
+                    className='btn btn-sm mt-4 btn-primary text-white'
                     type="submit"
                     disabled={!stripe || !clientSecret || processing}
                 >

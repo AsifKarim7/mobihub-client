@@ -10,17 +10,15 @@ const MyProducts = () => {
     const [myProducts, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myproducts?email=${user?.email}`)
+        fetch(`https://mobihub-server-ecru.vercel.app/myproducts?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [user?.email])
 
-    console.log(myProducts)
-
     const handleDelete = _id => {
         const proceed = window.confirm('Do you want to delete this review?');
         if (proceed) {
-            fetch(`http://localhost:5000/myproducts/${_id}`, {
+            fetch(`https://mobihub-server-ecru.vercel.app/myproducts/${_id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -38,7 +36,7 @@ const MyProducts = () => {
 
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-screen-xl mx-auto'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto my-12'>
             {
                 myProducts.map(product => <MyProductCard
                     key={product._id}

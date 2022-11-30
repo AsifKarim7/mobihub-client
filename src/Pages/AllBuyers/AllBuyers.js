@@ -7,14 +7,14 @@ const AllBuyers = () => {
     const { data: buyers = [], refetch } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users?role=buyer');
+            const res = await fetch('https://mobihub-server-ecru.vercel.app/users?role=buyer');
             const data = await res.json();
             return data;
         }
     });
 
     const handleAdmin = id => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://mobihub-server-ecru.vercel.app/users/admin/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())
@@ -29,7 +29,7 @@ const AllBuyers = () => {
     const handleDelete = _id => {
         const proceed = window.confirm('Do you want to delete this review?');
         if (proceed) {
-            fetch(`http://localhost:5000/users/${_id}`, {
+            fetch(`https://mobihub-server-ecru.vercel.app/users/${_id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -45,9 +45,7 @@ const AllBuyers = () => {
     console.log(buyers)
 
     return (
-        <div>
-            <h2 className='text-3xl'>All Buyers</h2>
-
+        <div className='my-12 max-w-screen-xl mx-auto'>
             <div className="overflow-x-auto w-full mx-5">
                 <table className="table w-full">
                     <thead>
@@ -61,7 +59,7 @@ const AllBuyers = () => {
                             <th>Email</th>
                             <th>Make Admin</th>
                             <th>Delete</th>
-                            <th></th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -75,15 +73,15 @@ const AllBuyers = () => {
                                     {buyer.name}
                                 </td>
                                 <td>{buyer.email}</td>
-                                <th>
+                                <td>
                                     {buyer?.role !== 'admin' && <button onClick={() => handleAdmin(buyer._id)} className="btn btn-info text-white btn-xs">Admin</button>}
-                                </th>
+                                </td>
                                 {console.log(buyer)}
-                                <th>
+                                <td>
                                     < button onClick={() => handleDelete(buyer._id)} className="btn  btn-error btn-circle btn-xs">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                                     </button>
-                                </th>
+                                </td>
                             </tr>)
                         }
 

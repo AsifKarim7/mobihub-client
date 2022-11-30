@@ -10,20 +10,24 @@ const Payment = () => {
     const order = useLoaderData();
 
     console.log(order)
-    const { name, price, img, customername, } = order;
+    const { name, price, customername, } = order;
 
     return (
-        <div className='max-w-screen-xl mx-auto my-12'>
+        <div className='max-w-screen-md mx-auto my-12'>
 
-            <img src={img} className="w-20 h-20" alt="" />
-            <h3 className="text-3xl">Payment for {name}</h3>
-            <p className="text-xl">Hey, {customername}! Please pay <strong>${price}</strong> to complete your order</p>
-            <div className='w-96 my-12'>
-                <Elements stripe={stripePromise}>
-                    <CheckoutForm
-                        order={order}
-                    />
-                </Elements>
+            <div className='flex justify-center flex-col items-center'>
+                <h3 className="text-3xl">Payment for {name}</h3>
+                <p className="text-xl mt-4">Hey, {customername}! Please pay <strong>${price}</strong> to complete your order</p>
+            </div>
+
+            <div className='flex justify-center'>
+                <div className='w-96 my-12'>
+                    <Elements stripe={stripePromise}>
+                        <CheckoutForm
+                            order={order}
+                        />
+                    </Elements>
+                </div>
             </div>
         </div>
     );

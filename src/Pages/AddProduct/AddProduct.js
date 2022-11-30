@@ -26,6 +26,8 @@ const AddProduct = () => {
         const used = form.used.value;
         const condition = form.condition.value;
         const location = form.location.value;
+        const postedDate = form.postedDate.value;
+        const originalPrice = form.originalPrice.value;
         const product = {
             img,
             price,
@@ -37,9 +39,11 @@ const AddProduct = () => {
             title,
             used,
             condition,
-            location
+            location,
+            postedDate,
+            originalPrice
         }
-        fetch('http://localhost:5000/product', {
+        fetch('https://mobihub-server-ecru.vercel.app/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -62,73 +66,79 @@ const AddProduct = () => {
     return (
         <div className="flex items-center justify-center flex-col lg:flex-row p-12 max-w-screen-xl mx-auto " >
 
-            <div className="mx-auto w-full max-w-auto px-8 bg-blue-50 ">
-                <h2 className='text-5xl text-center font-bold my-10 text-blue-500'>Add Products</h2>
+            <div className="mx-auto w-full max-w-auto px-8 bg-[#DEF6FF] ">
+                <h2 className='text-5xl text-center font-bold my-10 text-[#2666CF]'>Add Products</h2>
                 <form onSubmit={handleAddProduct} className='my-20 '  >
 
 
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
 
                         <div className="mb-5">
-                            <label className="mb-3 block text-xl font-semibold text-blue-500">Seller Name</label>
+                            <label className="mb-3 block text-xl font-semibold text-[#2666CF]">Seller Name</label>
                             <input type="text" name="seller" value={displayName} disabled placeholder="Seller Name" className="w-full rounded-md border border-slate-300
                      bg-white py-3 px-6 font-medium outline-none focus:border-primary focus:shadow-md" required />
                         </div>
                         <div className="mb-5">
-                            <label className="mb-3 block text-xl font-semibold text-blue-500">Seller Email</label>
+                            <label className="mb-3 block text-xl font-semibold text-[#2666CF]">Seller Email</label>
                             <input type="email" name="sellerEmail" value={email} disabled placeholder="Seller Email" className="w-full rounded-md border border-slate-300
                      bg-white py-3 px-6 font-medium outline-none focus:border-primary focus:shadow-md" required />
                         </div>
                         <div className="mb-5">
-                            <label className="mb-3 block text-xl font-semibold text-blue-500">Product Name</label>
+                            <label className="mb-3 block text-xl font-semibold text-[#2666CF]">Product Name</label>
                             <input type="text" name="name" placeholder="Enter Name" className="w-full rounded-md border border-slate-300
                      bg-white py-3 px-6 font-medium outline-none focus:border-primary focus:shadow-md" required />
                         </div>
                         <div className="mb-5">
-                            <label className="mb-3 block text-xl font-semibold text-blue-500">Location</label>
-                            <input type="text" name="location" placeholder="Enter Name" className="w-full rounded-md border border-slate-300
+                            <label className="mb-3 block text-xl font-semibold text-[#2666CF]">Location</label>
+                            <input type="text" name="location" placeholder="Your Location" className="w-full rounded-md border border-slate-300
                      bg-white py-3 px-6 font-medium outline-none focus:border-primary focus:shadow-md" required />
                         </div>
 
                         <div className="mb-5">
-                            <label className="mb-3 block text-xl font-semibold text-blue-500">Category ID (Iphone = 1, Samsung = 2, Oneplus = 3)</label>
-                            <input type="text" name="categoryId" placeholder="Enter Category Id" className="w-full rounded-md border border-slate-300
+                            <label className="mb-3 block text-xl font-semibold text-[#2666CF]">Category ID (Iphone = 1, Samsung = 2, Xiaomi = 3)</label>
+                            <input type="text" name="categoryId" placeholder="Category Id" className="w-full rounded-md border border-slate-300
                      bg-white py-3 px-6 font-medium outline-none focus:border-primary focus:shadow-md" required />
                         </div>
 
                         <div className="mb-5">
-                            <label className="mb-3 block text-xl font-semibold text-blue-500">Price</label>
-                            <input type="text" name="price" placeholder="Enter Price" className="w-full rounded-md border border-slate-300
+                            <label className="mb-3 block text-xl font-semibold text-[#2666CF]">Resale Price</label>
+                            <input type="text" name="price" placeholder="Resale Price" className="w-full rounded-md border border-slate-300
                      bg-white py-3 px-6 font-medium outline-none focus:border-primary focus:shadow-md" required />
                         </div>
 
                         <div className="mb-5">
-                            <label className="mb-3 block text-xl font-semibold text-blue-500">Original Price</label>
-                            <input type="text" name="originalPrice" placeholder="Enter Product's Original Price" className="w-full rounded-md border border-slate-300
+                            <label className="mb-3 block text-xl font-semibold text-[#2666CF]">Original Price</label>
+                            <input type="text" name="originalPrice" placeholder="Original Price" className="w-full rounded-md border border-slate-300
                      bg-white py-3 px-6 font-medium outline-none focus:border-primary focus:shadow-md" required />
                         </div>
 
                         <div className="mb-5">
-                            <label className="mb-3 block text-xl font-semibold text-blue-500">Used Time</label>
-                            <input type="text" name="used" placeholder="Enter How Long You Used The Product" className="w-full rounded-md border border-slate-300
+                            <label className="mb-3 block text-xl font-semibold text-[#2666CF]">Used Time</label>
+                            <input type="text" name="used" placeholder="How Long You've Used The Product" className="w-full rounded-md border border-slate-300
                      bg-white py-3 px-6 font-medium outline-none focus:border-primary focus:shadow-md" required />
                         </div>
 
                         <div className="mb-5">
-                            <label className="mb-3 block text-xl font-semibold text-blue-500">Product Condition</label>
-                            <input type="text" name="condition" placeholder="Enter Product Condition" className="w-full rounded-md border border-slate-300
+                            <label className="mb-3 block text-xl font-semibold text-[#2666CF]">Product Condition</label>
+                            <input type="text" name="condition" placeholder="Product Condition" className="w-full rounded-md border border-slate-300
                      bg-white py-3 px-6 font-medium outline-none focus:border-primary focus:shadow-md" required />
                         </div>
 
                         <div className="mb-5">
-                            <label className="mb-3 block text-xl font-semibold text-blue-500">ImageURL</label>
-                            <input type="text" name="img" placeholder="Enter Photo URL" className="w-full rounded-md border border-slate-300
+                            <label className="mb-3 block text-xl font-semibold text-[#2666CF]">ImageURL</label>
+                            <input type="text" name="img" placeholder="ImageURL" className="w-full rounded-md border border-slate-300
                      bg-white py-3 px-6 font-medium outline-none focus:border-primary focus:shadow-md" required />
                         </div>
 
                         <div className="mb-5">
-                            <label className="mb-3 block text-xl font-semibold text-blue-500">Description</label>
-                            <textarea rows="5" name="description" placeholder="Enter A Description"
+                            <label className="mb-3 block text-xl font-semibold text-[#2666CF]">Posting Date</label>
+                            <input type="text" name="postedDate" placeholder="Posting Date" className="w-full rounded-md border border-slate-300
+                     bg-white py-3 px-6 font-medium outline-none focus:border-primary focus:shadow-md" required />
+                        </div>
+
+                        <div className="mb-5">
+                            <label className="mb-3 block text-xl font-semibold text-[#2666CF]">Description</label>
+                            <textarea rows="5" name="description" placeholder="Type Here"
                                 className="w-full resize-none rounded-md border border-slate-300 bg-white py-3 px-6 outline-none font-medium  focus:border-primary focus:shadow-md" required></textarea>
                         </div>
 
